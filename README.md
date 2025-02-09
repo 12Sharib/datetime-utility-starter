@@ -34,6 +34,22 @@ A custom Spring Boot starter for handling various Date and Time operations effic
 - **ConvertStringToLocalDateTime** – Convert a string to `LocalDateTime` using a specified format.
 - **ConvertStringToLocalDate** – Convert a string to `LocalDate` using a specified format.
 
+## 📦 Installation
+
+To use this starter in your Spring Boot project, add the following dependency:
+
+```xml
+<dependency>
+    <groupId>com.github.12Sharib</groupId>
+    <artifactId>datetime-utility-starter</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+## 🔗 Links
+
+- **Source Code: GitHub Repo**(https://github.com/12Sharib/datetime-utility-starter)
+- **GitHub Package: Maven Package**(https://maven.pkg.github.com/12Sharib/datetime-utility-starter)
+
 ## License
 
 This project is open-source and available for personal and commercial use.
