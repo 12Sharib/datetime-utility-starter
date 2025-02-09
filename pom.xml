@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>datetime-utility-starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>datetime-utility-starter</name>
 	<description>Utility for datetime operations</description>
 	<url/>

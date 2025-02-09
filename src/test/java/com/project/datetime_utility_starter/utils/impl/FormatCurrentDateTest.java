@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import org.junit.jupiter.api.Test;
 
 class FormatCurrentDateTest extends TestBase {
@@ -50,7 +51,10 @@ class FormatCurrentDateTest extends TestBase {
     String expectedDateTime =
         ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"));
     String response = dateTimeUtils.formatCurrentDate(DateFormats.FORMAT_ISO_DATETIME_MILLIS_X);
-    assertEquals(expectedDateTime, response);
+    assertTrue(Math.abs(ChronoUnit.MILLIS.between(
+        ZonedDateTime.parse(expectedDateTime, DateTimeFormatter.ofPattern(DateFormats.FORMAT_ISO_DATETIME_MILLIS_X)),
+        ZonedDateTime.parse(response, DateTimeFormatter.ofPattern(DateFormats.FORMAT_ISO_DATETIME_MILLIS_X))
+    )) <= 5, "Timestamps differ by more than 5ms");
   }
 
   @Test
@@ -58,7 +62,10 @@ class FormatCurrentDateTest extends TestBase {
     String expectedDateTime =
         ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"));
     String response = dateTimeUtils.formatCurrentDate(DateFormats.FORMAT_ISO_DATETIME_MILLIS_Z);
-    assertEquals(expectedDateTime, response);
+    assertTrue(Math.abs(ChronoUnit.MILLIS.between(
+        ZonedDateTime.parse(expectedDateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")),
+        ZonedDateTime.parse(response, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
+    )) <= 5, "Timestamps differ by more than 5ms");
   }
 
   @Test

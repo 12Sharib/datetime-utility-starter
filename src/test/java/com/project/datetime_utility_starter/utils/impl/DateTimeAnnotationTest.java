@@ -73,7 +73,8 @@ class DateTimeAnnotationTest extends TestBase {
       InvalidFormatTest invalidTest = new InvalidFormatTest();
       new DateTimeAnnotationProcessor().postProcessBeforeInitialization(invalidTest, null);
     });
-    assertTrue(exception.getMessage().contains("Invalid format"));
+    System.out.println(exception);
+    assertTrue(exception.getMessage().contains("Invalid date format"));
   }
 
   @Test

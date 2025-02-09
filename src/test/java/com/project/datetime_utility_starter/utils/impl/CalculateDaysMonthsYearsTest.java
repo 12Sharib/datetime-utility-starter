@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.project.datetime_utility_starter.TestBase;
+import com.project.datetime_utility_starter.utils.enums.ErrorsEnum;
 import com.project.datetime_utility_starter.utils.exceptions.DateTimeUtilException;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -49,7 +50,7 @@ class CalculateDaysMonthsYearsTest extends TestBase {
         () -> {
           dateTimeUtils.calculateDaysMonthsYears("01-01-2023", "2023-03-15");
         });
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test
@@ -58,7 +59,7 @@ class CalculateDaysMonthsYearsTest extends TestBase {
         () -> {
           dateTimeUtils.calculateDaysMonthsYears("", "2023-03-15");
         });
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test
@@ -67,7 +68,7 @@ class CalculateDaysMonthsYearsTest extends TestBase {
         () -> {
           dateTimeUtils.calculateDaysMonthsYears("2023-03-15", "");
         });
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test
@@ -76,6 +77,6 @@ class CalculateDaysMonthsYearsTest extends TestBase {
         () -> {
           dateTimeUtils.calculateDaysMonthsYears("2023-03-15", "2020-01-01");
         });
-    assertEquals("Start date cannot be after end date.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_END_BEFORE_START_DATE.getMessage(), exception.getMessage());
   }
 }
