@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.project.datetime_utility_starter.TestBase;
+import com.project.datetime_utility_starter.utils.enums.ErrorsEnum;
 import com.project.datetime_utility_starter.utils.exceptions.DateTimeUtilException;
 import org.junit.jupiter.api.Test;
 
@@ -56,14 +57,14 @@ class CalculateWeekendsTest extends TestBase {
   void testCalculateWeekends_StartDateAfterEndDate() {
     DateTimeUtilException exception = assertThrows(DateTimeUtilException.class,
         () -> dateTimeUtils.calculateWeekends("2025-01-14", "2025-01-01"));
-    assertEquals("Start date cannot be after end date.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_END_BEFORE_START_DATE.getMessage(), exception.getMessage());
   }
 
   @Test
   void testCalculateWeekends_InvalidDateFormat() {
     DateTimeUtilException exception = assertThrows(DateTimeUtilException.class,
         () -> dateTimeUtils.calculateWeekends("14-01-2025", "01-01-2025"));
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test
@@ -84,14 +85,14 @@ class CalculateWeekendsTest extends TestBase {
   void testCalculateWeekends_EmptyStartDate() {
     DateTimeUtilException exception = assertThrows(DateTimeUtilException.class,
         () -> dateTimeUtils.calculateWeekends("", "2025-01-14"));
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test
   void testCalculateWeekends_EmptyEndDate() {
     DateTimeUtilException exception = assertThrows(DateTimeUtilException.class,
         () -> dateTimeUtils.calculateWeekends("2025-01-01", ""));
-    assertEquals("Invalid date format. Expected format is yyyy-MM-dd.", exception.getMessage());
+    assertEquals(ErrorsEnum.INVALID_DATE_FORMAT.getMessage(), exception.getMessage());
   }
 
   @Test

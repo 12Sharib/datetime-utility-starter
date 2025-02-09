@@ -41,7 +41,7 @@ public class DateTimeAnnotationProcessor implements BeanPostProcessor {
       }
 
       if (!isValidDateFormat(format)) {
-        throw new DateTimeUtilException(new ErrorResponse(ErrorsEnum.INVALID_FORMAT.getMessage()));
+        throw new DateTimeUtilException(new ErrorResponse(ErrorsEnum.INVALID_DATE_FORMAT.getMessage()));
       }
       setFieldValue(field, bean, timezone, format);
     }
