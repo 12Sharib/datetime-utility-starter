@@ -8,7 +8,7 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.project</groupId>
+	<groupId>com.github.12Sharib</groupId>
 	<artifactId>datetime-utility-starter</artifactId>
 	<version>1.0.0</version>
 	<name>datetime-utility-starter</name>
